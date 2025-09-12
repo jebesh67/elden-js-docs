@@ -8,6 +8,22 @@ body {
 .css-header-text {
   @apply text-xl md:text-2xl xl:text-3xl;
 }
+.css-main-head-text {
+  @apply text-5xl md:text-6xl xl:text-6xl;
+}
+.css-subhead-text {
+  @apply text-xl md:text-2xl xl:text-3xl;
+}
+
+.css-keyword-red {
+  @apply text-red-500 font-semibold;
+}
+.css-keyword-blue {
+  @apply text-blue-500 font-semibold;
+}
+.css-keyword-purple {
+  @apply text-purple-500 font-semibold;
+}
 
 @keyframes shine {
   0% {

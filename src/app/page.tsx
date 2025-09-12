@@ -1,7 +1,9 @@
+import { IntroductionComponent } from "@/components/Introduction/IntroductionComponent";
+
 const Home = () => {
   return (
     <div>
-      <div>Hi</div>
+      <IntroductionComponent />
     </div>
   );
 };

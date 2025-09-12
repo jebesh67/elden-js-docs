@@ -2,36 +2,51 @@
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HeaderNavs } from "@/components/shared/HeaderNavs";
 import { useThemeContext } from "@/context/ThemeContext";
+import { AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
   const { theme } = useThemeContext();
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setShowNav(true);
+      } else {
+        setShowNav(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="fixed top-0 z-50 w-screen">
+    <div className="fixed top-0 z-50 w-screen transition-all ease-in-out">
       <header
         className={clsx(
-          "w-screen select-none",
-          theme === "light" ? "bg-zinc-400 text-zinc-800" : "bg-zinc-900",
+          "w-screen select-none backdrop-blur-md",
+          theme === "light" ? "bg-zinc-400/70 text-zinc-800" : "bg-zinc-900/70",
         )}
       >
         <div className="flex items-center justify-center relative py-4 px-4">
           <button
             className={clsx(
-              "absolute left-4 p-2 rounded hover:cursor-pointer transition-colors",
+              "absolute left-4 p-2 rounded hover:cursor-pointer transition-colors md:hidden",
               theme === "light"
-                ? "hover:bg-zinc-600 active:bg-zinc-700"
-                : "hover:bg-zinc-800 active:bg-zinc-700",
+                ? "hover:bg-zinc-600/50 active:bg-zinc-700/50"
+                : "hover:bg-zinc-800/50 active:bg-zinc-700/50",
               showNav
                 ? theme === "light"
-                  ? "bg-zinc-600"
-                  : "bg-zinc-800"
+                  ? "bg-zinc-600/20"
+                  : "bg-zinc-800/60"
                 : theme === "light"
-                  ? "bg-zinc-400"
-                  : "bg-zinc-900",
+                  ? "bg-zinc-400/0"
+                  : "bg-zinc-900/0",
             )}
             onClick={(): void => setShowNav(!showNav)}
           >
@@ -53,8 +68,7 @@ const Header = () => {
           </h1>
         </div>
       </header>
-
-      {showNav && <HeaderNavs />}
+      <AnimatePresence>{showNav && <HeaderNavs />}</AnimatePresence>
     </div>
   );
 };

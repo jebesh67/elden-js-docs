@@ -25,7 +25,9 @@ export default async function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          initialTheme === "dark" ? "bg-zinc-800" : "bg-zinc-300",
+          initialTheme === "dark"
+            ? "bg-zinc-800 text-zinc-100"
+            : "bg-zinc-300 text-zinc-900",
         )}
       >
         <main>
