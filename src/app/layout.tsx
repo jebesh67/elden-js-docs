@@ -7,7 +7,7 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: {
-    default: "Elden.js Docs",
+    default: "EldenJS Docs",
     template: "%s | EldenJS",
   },
   description: "Documentation for elden-js npm package",
