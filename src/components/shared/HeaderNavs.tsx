@@ -139,14 +139,10 @@ export const HeaderNavs = () => {
               {theme === "dark" ? <IoMoonOutline /> : <IoMdSunny />}
             </button>
 
-            <div
-              className={clsx(
-                "absolute w-full h-full rounded-full flex items-center justify-center py-1",
-              )}
-            >
+            <div className="absolute w-full h-full flex gap-x-2 px-1 py-1">
               <button
                 className={clsx(
-                  "w-1/2 rounded-full h-full ml-1 place-items-center hover:cursor-pointer",
+                  "flex justify-center items-center w-1/2 h-full rounded-full hover:cursor-pointer",
                   theme === "light"
                     ? "text-zinc-900 hover:bg-zinc-400"
                     : "text-zinc-300 hover:bg-zinc-700",
@@ -158,7 +154,7 @@ export const HeaderNavs = () => {
 
               <button
                 className={clsx(
-                  "w-1/2 rounded-full h-full mr-1 place-items-center hover:cursor-pointer",
+                  "flex justify-center items-center w-1/2 h-full rounded-full hover:cursor-pointer",
                   theme === "light"
                     ? "text-zinc-900 hover:bg-zinc-300"
                     : "hover:bg-zinc-800",
