@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+    <title id="title">Elden JS</title>
+    <desc id="desc">Logo: square emblem with rounded edges, Elden on top, JS below in dark green theme</desc>
+
+    <!-- Background square -->
+    <rect x="0" y="0" width="200" height="200" rx="25" fill="#064e3b"/>
+
+    <!-- Elden text on top -->
+    <text x="50%" y="60" text-anchor="middle" fill="#a7f3d0" font-family="Inter, sans-serif" font-weight="600" font-size="32">
+        Elden
+    </text>
+
+    <!-- JS big below -->
+    <text x="50%" y="140" text-anchor="middle" fill="#10b981" font-family="Inter, sans-serif" font-weight="800" font-size="72">
+        JS
+    </text>
+</svg>

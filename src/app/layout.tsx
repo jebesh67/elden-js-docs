@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     template: "%s | EldenJS",
   },
   description: "Documentation for elden-js npm package",
+  icons: "/elden-js-logo.svg",
 };
 
 export default async function RootLayout({
