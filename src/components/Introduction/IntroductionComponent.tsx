@@ -10,7 +10,7 @@ export const IntroductionComponent = () => {
   return (
     <div
       className={clsx(
-        "pt-18 md:pt-21 pl-6 md:pl-[17.25rem] transition-all duration-300 px-6 pb-6 space-y-4",
+        "pt-22 md:pt-25 pl-6 md:pl-[17.25rem] transition-all duration-300 px-6 pb-6 space-y-4",
         theme === "dark" ? "text-zinc-100" : "text-zinc-900",
       )}
     >
@@ -77,7 +77,9 @@ export const IntroductionComponent = () => {
               : "bg-zinc-100 text-zinc-700",
           )}
         >
-          <span className="css-keyword-purple">yarn add</span> elden-js
+          <code className="font-semibold">
+            <span className="css-keyword-purple">yarn add</span> elden-js
+          </code>
         </pre>
       </CopyablePre>
 
@@ -91,7 +93,9 @@ export const IntroductionComponent = () => {
               : "bg-zinc-100 text-zinc-700",
           )}
         >
-          <span className="css-keyword-purple">pnpm add</span> elden-js
+          <code className="font-semibold">
+            <span className="css-keyword-purple">pnpm add</span> elden-js
+          </code>
         </pre>
       </CopyablePre>
     </div>

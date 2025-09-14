@@ -6,10 +6,11 @@ import { IoMoonOutline } from "react-icons/io5";
 import { useThemeContext } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export const HeaderNavs = () => {
   const { theme, setTheme } = useThemeContext();
-  const pathname = usePathname();
+  const pathname: string = usePathname();
 
   return (
     <>
@@ -20,8 +21,10 @@ export const HeaderNavs = () => {
         exit={{ x: -300, opacity: 0 }}
         transition={{ type: "tween", duration: 0.3 }}
         className={clsx(
-          "fixed pt-4 w-fit select-none h-full z-40 backdrop-blur-md",
-          theme === "light" ? "bg-zinc-400/70" : "bg-zinc-900/70",
+          "fixed pt-4 w-fit select-none h-full z-40 backdrop-blur-md shadow-md",
+          theme === "light"
+            ? "bg-zinc-400/70 shadow-zinc-500"
+            : "bg-zinc-900/70 shadow-zinc-900",
         )}
       >
         <div className={clsx("flex flex-col gap-1 px-4 mb-3")}>
@@ -33,26 +36,28 @@ export const HeaderNavs = () => {
           >
             Getting Started
           </h2>
-          <button
-            className={clsx(
-              "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
-              theme === "light"
-                ? clsx(
-                    " hover:text-zinc-900",
-                    pathname.startsWith("/")
-                      ? "bg-zinc-300 text-blue-500"
-                      : "text-zinc-700",
-                  )
-                : clsx(
-                    "hover:text-zinc-200",
-                    pathname.startsWith("/")
-                      ? "bg-zinc-800 text-blue-500"
-                      : "text-zinc-500 ",
-                  ),
-            )}
-          >
-            Introduction
-          </button>
+          <Link href={"/"}>
+            <button
+              className={clsx(
+                "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
+                theme === "light"
+                  ? clsx(
+                      " hover:text-zinc-900",
+                      pathname === "/"
+                        ? "bg-zinc-300 text-blue-500"
+                        : "text-zinc-700",
+                    )
+                  : clsx(
+                      "hover:text-zinc-200",
+                      pathname === "/"
+                        ? "bg-zinc-800 text-blue-500"
+                        : "text-zinc-500 ",
+                    ),
+              )}
+            >
+              Introduction
+            </button>
+          </Link>
         </div>
 
         <div className={clsx("flex flex-col gap-1 px-4")}>
@@ -64,46 +69,50 @@ export const HeaderNavs = () => {
           >
             Middleware Usage
           </h2>
-          <button
-            className={clsx(
-              "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
-              theme === "light"
-                ? clsx(
-                    " hover:text-zinc-900",
-                    pathname.startsWith("/verify-access")
-                      ? "bg-zinc-300 text-blue-500"
-                      : "text-zinc-700",
-                  )
-                : clsx(
-                    "hover:text-zinc-200",
-                    pathname.startsWith("/verify-access")
-                      ? "bg-zinc-800 text-blue-500"
-                      : "text-zinc-500 ",
-                  ),
-            )}
-          >
-            Token verification
-          </button>
-          <button
-            className={clsx(
-              "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
-              theme === "light"
-                ? clsx(
-                    " hover:text-zinc-900",
-                    pathname.startsWith("/rate-control")
-                      ? "bg-zinc-300 text-blue-500"
-                      : "text-zinc-700",
-                  )
-                : clsx(
-                    "hover:text-zinc-200",
-                    pathname.startsWith("/rate-control")
-                      ? "bg-zinc-800 text-blue-500"
-                      : "text-zinc-500 ",
-                  ),
-            )}
-          >
-            Rate Limiting
-          </button>
+          <Link href={"/verify-access"}>
+            <button
+              className={clsx(
+                "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
+                theme === "light"
+                  ? clsx(
+                      " hover:text-zinc-900",
+                      pathname.startsWith("/verify-access")
+                        ? "bg-zinc-300 text-blue-500"
+                        : "text-zinc-700",
+                    )
+                  : clsx(
+                      "hover:text-zinc-200",
+                      pathname.startsWith("/verify-access")
+                        ? "bg-zinc-800 text-blue-500"
+                        : "text-zinc-500 ",
+                    ),
+              )}
+            >
+              Token verification
+            </button>
+          </Link>
+          <Link href="/rate-control">
+            <button
+              className={clsx(
+                "w-full pl-2 pr-10 sm:pr-15 md:pr-20 py-2 rounded-md text-left hover:cursor-pointer transition-colors",
+                theme === "light"
+                  ? clsx(
+                      " hover:text-zinc-900",
+                      pathname.startsWith("/rate-control")
+                        ? "bg-zinc-300 text-blue-500"
+                        : "text-zinc-700",
+                    )
+                  : clsx(
+                      "hover:text-zinc-200",
+                      pathname.startsWith("/rate-control")
+                        ? "bg-zinc-800 text-blue-500"
+                        : "text-zinc-500 ",
+                    ),
+              )}
+            >
+              Rate Limiting
+            </button>
+          </Link>
         </div>
 
         <div

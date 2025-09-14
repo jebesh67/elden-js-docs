@@ -26,7 +26,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="fixed top-0 z-50 w-screen transition-all ease-in-out">
+    <div className="fixed top-0 z-50 w-screen transition-all ease-in-out select-none">
       <header
         className={clsx(
           "w-screen select-none backdrop-blur-md",
