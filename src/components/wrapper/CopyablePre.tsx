@@ -6,12 +6,18 @@ type CopyablePreProps = {
   theme: "light" | "dark";
 };
 
+type ReactWithChildren = {
+  props: {
+    children: ReactNode;
+  };
+};
+
 const getTextFromChildren = (children: ReactNode): string => {
   if (typeof children === "string") return children;
   if (Array.isArray(children))
     return children.map(getTextFromChildren).join("");
   if (typeof children === "object" && children && "props" in children)
-    return getTextFromChildren((children as any).props.children);
+    return getTextFromChildren((children as ReactWithChildren).props.children);
   return "";
 };
 
