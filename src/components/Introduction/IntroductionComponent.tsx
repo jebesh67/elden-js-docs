@@ -47,9 +47,13 @@ export const IntroductionComponent = () => {
         </li>
         <li>Promise-based API with minimal setup.</li>
         <li>Framework-agnostic and dependency-light.</li>
+        <li>
+          ✅ Fully <span className="font-semibold">tested with Jest</span> to
+          ensure stability and reliability.
+        </li>
       </ul>
 
-      <h3 className="css-subhead-text font-medium">Installing</h3>
+      <h3 className="css-subhead-text font-medium">Installation</h3>
 
       <p>Using npm:</p>
       <CopyablePre theme={theme}>
@@ -98,6 +102,15 @@ export const IntroductionComponent = () => {
           </code>
         </pre>
       </CopyablePre>
+      <p
+        className={clsx(
+          "leading-[2] italic",
+          theme === "dark" ? "text-zinc-400" : "text-zinc-600",
+        )}
+      >
+        All utilities in EldenJS are covered by comprehensive Jest tests, so you
+        can use them in production with confidence.
+      </p>
     </div>
   );
 };
