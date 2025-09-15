@@ -3,9 +3,14 @@
 import clsx from "clsx";
 import { useThemeContext } from "@/context/ThemeContext";
 import CopyablePre from "@/components/wrapper/CopyablePre";
+import { ExampleCode } from "@/components/usage/shared/ExampleCode";
 
 export const IntroductionComponent = () => {
   const { theme } = useThemeContext();
+
+  const npmInstallation: string = `npm install elden-js`;
+  const yarnInstallation: string = `yarn add elden-js`;
+  const pnpmInstallation: string = `pnpm add elden-js`;
 
   return (
     <div
@@ -55,56 +60,18 @@ export const IntroductionComponent = () => {
 
       <h3 className="css-subhead-text font-medium">Installation</h3>
 
-      <p>Using npm:</p>
-      <CopyablePre theme={theme}>
-        <pre
-          className={clsx(
-            "p-3 rounded-lg",
-            theme === "dark"
-              ? "bg-zinc-700 text-zinc-200"
-              : "bg-zinc-100 text-zinc-700",
-          )}
-        >
-          <code className="font-semibold">
-            <span className="css-keyword-purple">npm install</span> elden-js
-          </code>
-        </pre>
-      </CopyablePre>
+      <div>
+        <p>Using npm:</p>
+        <ExampleCode exampleCode={npmInstallation} />
+        <p>Using yarn:</p>
+        <ExampleCode exampleCode={yarnInstallation} />
+        <p>Using pnpm:</p>
+        <ExampleCode exampleCode={pnpmInstallation} />
+      </div>
 
-      <p>Using yarn:</p>
-      <CopyablePre theme={theme}>
-        <pre
-          className={clsx(
-            "p-3 rounded-lg",
-            theme === "dark"
-              ? "bg-zinc-700 text-zinc-200"
-              : "bg-zinc-100 text-zinc-700",
-          )}
-        >
-          <code className="font-semibold">
-            <span className="css-keyword-purple">yarn add</span> elden-js
-          </code>
-        </pre>
-      </CopyablePre>
-
-      <p>Using pnpm:</p>
-      <CopyablePre theme={theme}>
-        <pre
-          className={clsx(
-            "p-3 rounded-lg",
-            theme === "dark"
-              ? "bg-zinc-700 text-zinc-200"
-              : "bg-zinc-100 text-zinc-700",
-          )}
-        >
-          <code className="font-semibold">
-            <span className="css-keyword-purple">pnpm add</span> elden-js
-          </code>
-        </pre>
-      </CopyablePre>
       <p
         className={clsx(
-          "leading-[2] italic",
+          "leading-[2] italic text-center",
           theme === "dark" ? "text-zinc-400" : "text-zinc-600",
         )}
       >

@@ -1,4 +1,4 @@
-import { RateControl } from "@/components/usage/RateControl";
+import { RateControl } from "@/components/usage/rateLimiting/RateControl";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

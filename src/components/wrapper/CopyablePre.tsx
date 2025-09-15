@@ -3,48 +3,40 @@ import clsx from "clsx";
 
 type CopyablePreProps = {
   children: ReactNode;
+  code?: string;
   theme: "light" | "dark";
 };
 
-type ReactWithChildren = {
-  props: {
-    children: ReactNode;
-  };
-};
-
-const getTextFromChildren = (children: ReactNode): string => {
-  if (typeof children === "string") return children;
-  if (Array.isArray(children))
-    return children.map(getTextFromChildren).join("");
-  if (typeof children === "object" && children && "props" in children)
-    return getTextFromChildren((children as ReactWithChildren).props.children);
-  return "";
-};
-
-const CopyablePre = ({ children, theme }: CopyablePreProps) => {
+const CopyablePre = ({ children, code, theme }: CopyablePreProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (): void => {
-    const text: string = getTextFromChildren(children);
-    navigator.clipboard.writeText(text);
+    const textToCopy = code ?? getTextFromChildren(children);
+    if (!textToCopy) return;
+
+    navigator.clipboard.writeText(textToCopy);
     setCopied(true);
-    setTimeout((): void => setCopied(false), 1500);
+    setTimeout(() => setCopied(false), 1500);
+  };
+
+  const getTextFromChildren = (children: ReactNode): string => {
+    if (typeof children === "string") return children;
+    if (Array.isArray(children))
+      return children.map(getTextFromChildren).join("");
+    if (typeof children === "object" && children && "props" in children)
+      return getTextFromChildren(
+        (children as { props: { children: ReactNode } }).props.children,
+      );
+    return "";
   };
 
   return (
-    <pre
-      className={clsx(
-        "p-3 rounded-lg relative group",
-        theme === "dark"
-          ? "bg-zinc-700 text-zinc-200"
-          : "bg-zinc-100 text-zinc-700",
-      )}
-    >
+    <pre className={clsx("rounded-lg relative group p-4 overflow-x-auto")}>
       {children}
       <button
         onClick={handleCopy}
         className={clsx(
-          "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity text-sm px-2 py-1 rounded-lg font-mono hover:cursor-pointer font-medium",
+          "absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity text-sm px-2 py-1 rounded-lg font-mono hover:cursor-pointer font-medium",
           copied
             ? theme === "light"
               ? "bg-green-500 ring ring-green-700"

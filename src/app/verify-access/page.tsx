@@ -1,4 +1,4 @@
-import { VerifyAccess } from "@/components/usage/VerifyAccess";
+import { VerifyAccess } from "@/components/usage/tokenVerification/VerifyAccess";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

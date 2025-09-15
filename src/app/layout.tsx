@@ -4,6 +4,7 @@ import Header from "@/components/shared/Header";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { cookies } from "next/headers";
 import clsx from "clsx";
+import { Footer } from "@/components/shared/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +39,7 @@ export default async function RootLayout({
           <ThemeProvider initialTheme={initialTheme}>
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
         </main>
       </body>
